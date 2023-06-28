@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="modelo, HTML,CSS, JAVASCRIPT, BASIC AND ADVANCED">
+    <meta name="Author" content="Rafaelsurfce">
+    <meta name="description" content="Pagina utilizada para modelo de projetos e atividades do curso">
+    <title>Modelo</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="container-title">Formulário de Cadastro</h1>
+        <ul class="container-list">
+            <li>Nenhum campo pode estar vazio</li>
+            <li>Usuário só poderá conter letras e/ou números</li>
+            <li>Usuário deverá ter entre 3 e 12 caracteres</li>
+            <li>Senha Precisa ter entre 6 e 12 caracteres</li>
+        </ul>
+        <form action="" method="post" class="formulario valid" id="formulario">
+            <label for="nome">Nome:</label>
+            <input type="text" class="input-nome valid" id="nome">
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" class="input-sobrenome valid" id="sobrenome">
+            <label for="cpf">CPF:</label>
+            <input type="text" class="input-cpf valid" id="cpf">
+            <label for="usuario">Usuário:</label>
+            <input type="text" class="input-usuario valid" id="usuario">
+            <label for="senha">Senha:</label>
+            <input type="password" class="input-senha valid" id="senha">
+            <label for="repeatSenha">Repita Senha: </label> 
+            <input type="password" class="input-repeatSenha valid" id="repeatSenha">
+            <input type="submit" value="Enviar" class="input-submit">
+        </form>
+    </div>
+    <script src="assets/js/validCpf.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
