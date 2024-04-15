@@ -8,3 +8,5 @@ let nulo = null;        // nulo -> não aponta para lugar nenhum da memória
 const booleano =  true || false; // boolean aceita TRUE ou FALSE (LÓGICO)
 
 
+console.log(typeof(nome), nome);
+
