@@ -1,9 +1,13 @@
-const paragrafos = document.querySelectorAll('p');
+const paragrafos = document.querySelector('.paragrafos');
+const ps = paragrafos.querySelectorAll('p');
 
-const styleBody = getComputedStyle(document.body);
+
+const documentBody = getComputedStyle(document.body); //recupera o style do body
+const fundoColor = documentBody.backgroundColor;
 
 
-for(let i of paragrafos){
-    i.style.background = styleBody.backgroundColor;
-    i.style.color = 'white';
-};
+
+for(let vec of ps){
+    vec.style.backgroundColor = fundoColor;
+    vec.style.color = 'white'
+}

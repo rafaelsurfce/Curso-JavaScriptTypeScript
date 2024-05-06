@@ -1,58 +1,49 @@
-const form = document.querySelector('.form-imc');
+const form = document.getElementById('formulario');
 
 
-form.addEventListener('submit', (e) =>{
-    e.preventDefault();
 
-    const resultado = document.querySelector('.resultado');
-    const peso = document.getElementById('peso');
-    const altura = document.getElementById('altura');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const peso = event.target.querySelector('#peso'); //pega a altura do evento
+    const altura = event.target.querySelector('#altura');
+
+    if ( peso.value == '' || !Number(peso.value))return resultado('Peso Inválido', false);
     
-    let p = Number(peso.value);
-    let a = Number(altura.value);
+    if (altura.value == '' || !Number(altura.value))return resultado('Altura Inválida', false);
+    
 
-    if(isNaN(p)){
-        resultado.style.backgroundColor = '#f4998d';
-        resultado.innerHTML = 'Peso Invalido';
-        return;
-    }
-    else if (isNaN(a)){
-        resultado.style.backgroundColor = '#f4998d';
-        resultado.innerHTML = 'Altura Invalida';
-        return
-    }
-    else if (a === 0 || p === 0){
-        resultado.style.backgroundColor = '#f4998d';
-        resultado.innerHTML = 'Preencha todos os campos';
-    }
-    else{
-        const imc = p/(a * 2);
-        
-        if(imc < 18.5){
-            resultado.style.backgroundColor = '#499c70';
-            resultado.innerHTML = `Abaixo do Peso (IMC = ${imc.toFixed(2)})`;
-        }
-        else if(imc >= 18.5 && imc <= 24.9){
-            resultado.style.backgroundColor = '#499c70';
-            resultado.innerHTML = `Peso Normal (IMC = ${imc.toFixed(2)})`;
-        }
-        else if(imc >= 25 && imc <= 29.9){
-            resultado.style.backgroundColor = '#f4998d';
-            resultado.innerHTML = `sobre peso (IMC = ${imc.toFixed(2)})`;
-        }
-        else if (imc >= 30 && imc <= 34.9){
-            resultado.style.backgroundColor = '#f4796b';
-            resultado.innerHTML = `Obesidade Grau 1 (IMC = ${imc.toFixed(2)})`;
-        }
-        else if(imc >= 35 && imc <= 39.9){
-            resultado.style.backgroundColor = '#f44e3f';
-            resultado.innerHTML = `Obesidade Grau 2 (IMC = ${imc.toFixed(2)})`;
-        }
-        else if(imc > 40){
-            resultado.style.backgroundColor = '#f40000';
-            resultado.innerHTML = `Obesidade Grau 3 (IMC = ${imc.toFixed(2)})`;
-        }
-    }  
+    calculaIMC(Number(peso.value), Number(altura.value));
 });
 
 
+
+function resultado(msg, valid){
+    const resultado = document.querySelector('#result');
+    resultado.innerHTML = '';
+    const p = document.createElement('p'); //cria um elemento
+    p.classList.add('paragrafo-result'); //adiciona uma classe ao elemento criado
+    p.innerHTML = `${msg}`;
+    resultado.appendChild(p); //adiciona o elemento dentro do elemento RESULTADO
+
+    if(valid) {
+        return p.classList.add('paragrafo-true'); //adiciona uma classe ao elemento criado
+    }else{
+        return  p.classList.add('paragrafo-false'); //adiciona uma classe ao elemento criado
+    }
+
+}
+function calculaIMC(peso, altura){
+    return geraResultado(peso/(altura*altura));
+
+}
+
+
+function geraResultado(imc){
+    if(imc < 18.5) return resultado(`Seu IMC é ${imc.toFixed(2)} (Abaixo do peso)`, true);
+    if(imc >= 18.5 && imc <= 24.9) return resultado(`Seu IMC é ${imc.toFixed(2)} (Peso normal)`, true);
+    if(imc >= 25 && imc <= 29.9) return resultado(`Seu IMC é ${imc.toFixed(2)} (Sobrepeso)`, true);
+    if(imc >= 30 && imc <= 34.9) return resultado(`Seu IMC é ${imc.toFixed(2)} (Obesidade grau 1)`, true);
+    if(imc >= 35 && imc <= 39.9) return resultado(`Seu IMC é ${imc.toFixed(2)} (Obesidade grau 2)`, true);
+    else return resultado(`Seu IMC é ${imc.toFixed(2)} (Obesidade grau 3)`, true);
+}

@@ -1,94 +1,81 @@
-const resultado = document.querySelector('.container');
-/*
-function formataHora(hora, minuto){
-    let h =  hora < 10 ? `0${hora}` : `${hora}`;
-    let m =  minuto < 10 ? `0${minuto}` : `${minuto}`;
-    return `${h}:${m}`
+
+function geraDiaSemana(dia) {
+    switch (dia) {
+        case 0:
+            return 'Domingo';
+        case 1:
+            return 'Segunda - Feira';
+        case 2:
+            return 'Domingo';
+        case 3:
+            return 'Domingo';
+        case 4:
+            return 'Domingo';
+        case 6:
+            return 'Domingo';
+        default:
+            return 'ERRO';
+    }
 }
 
-function mes(mes){
-    switch(mes){
+function geraMes(mes){
+    switch (mes) {
         case 0:
-            return "Janeiro";
-            
+            return 'janeiro';
         case 1:
-            return "Fevereiro";
-            
+            return 'fevereiro';
         case 2:
-            return "Março";
-            
+            return 'Março';
         case 3:
-            return "Abril";
-            
+            return 'Abril';
         case 4:
-            return "Maio";
-            
+            return 'Maio';
         case 5:
-            return "Junho";
-            
+            return 'Junho';
         case 6:
-            return "Julho";
-            
+            return 'julho';
         case 7:
-            return "Agosto";
-            
+            return 'agosto';
         case 8:
-            return "Setembro";
-
+            return 'setembro';
         case 9:
-            return "Outubro";
-
+            return 'outubro';
         case 10:
-            return "Novembro";
-
+            return 'novembro';
         case 11:
-            return "Dezembro";
-
-        Default:
-            return '';
-            
+            return 'dezembro';
+        default:
+            return 'ERRO M';
     }
 }
 
-function diaSemana(diaSemana){
-    switch(diaSemana){
-        case 0:
-            return "Domingo";
-            
-        case 1:
-            return "Segunda-Feira";
-            
-        case 2:
-            return "Terça-Feira";
-            
-        case 3:
-            return "Quarta-Feira";
-            
-        case 4:
-            return "Quinta-Feira";
-            
-        case 5:
-            return "Sexta-Feira";
-            
-        case 6:
-            return "Sábado";
-
-        Default:
-            return '';
-    }
-
+function formataHora(hora, minuto){
+    const hora1 = hora < 10 ? `0${hora}`:hora;
+    const minuto1 = minuto < 10 ? `0${minuto}`:minuto;
+    return `${hora1}:${minuto1}`
 }
 
+
+
+function geraResultado(){
+    const data = new Date();
+    const resultado = document.querySelector('.container');
+    const p = document.createElement('p');
+    p.innerHTML = `${geraDiaSemana(data.getDay())}, ${data.getDate()} de ${geraMes(data.getMonth())} de ${data.getFullYear()}  ${formataHora(data.getHours(), data.getMinutes())}`;
+    resultado.appendChild(p);
+}
+
+geraResultado();
+
+
+/*1º RESOLUÇÃO DO CURSO
+
+const resultado = document.querySelector('.container');
 const data = new Date();
+const opcoes = {
+    dateStyle: 'full',
+    timeStyle: 'short',
+};
 
-resultado.innerHTML = `${diaSemana(data.getDay())}, 
-${data.getDate()} de ${mes(data.getMonth())} de ${data.getFullYear()} ${formataHora(data.getHours(), data.getMinutes())}`
-
+resultado.innerHTML = data.toLocaleString('pt-BR', opcoes);
 */
-
-
-
-// correção 
-
-const data = new Date();
-resultado.innerHTML = data.toLocaleDateString('pt-BR', {dateStyle: 'full', timeStyle: 'short'});

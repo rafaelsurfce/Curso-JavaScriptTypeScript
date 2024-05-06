@@ -1,55 +1,61 @@
-const time = document.querySelector(".time");
-const iniciar = document.querySelector(".iniciar");
-const pausar = document.querySelector(".pausar");
-const zerar = document.querySelector(".zerar");
+const timer = document.querySelector('.time');
+const iniciar = document.querySelector('.iniciar');
+const pausar = document.querySelector(' .pausar');
+const zerar = document.querySelector('.zerar');
 
+let relogio;
+let hora = 0;
+let minuto = 0;
+let segundo = 0;
 
-let segundos = 0;
-let minutos = 0;
-let horas = 0;
-
-let timer;
-
-
-
-iniciar.addEventListener('click', ()=>{
-    clearInterval(timer);
-    timer = setInterval(function(){
-        segundos++;
-        if(segundos === 60){
-            minutos++;
-            segundos = 0;
-        }
-        if(minutos === 60){
+iniciar.addEventListener('click', () => {
+    relogio = setInterval(function(){
+            segundo++;
+         if(segundo === 60){
+            minuto++;
+            segundo = 0;
+         }
+         if(minuto === 60){
             hora++;
-            minutos = 0;
-        }
-        if(horas === 24){
-            hora = 0;
-        }
-        time.innerText = formataHora(horas, minutos, segundos)
+            minuto = 0
+         }
+         atualizaTimer();
+         
     }, 1000)
+    pausar.disabled = false;
+    iniciar.disabled = true;
+    zerar.disabled = true;
+    timer.style.color = 'black';
+
 });
+
 
 pausar.addEventListener('click', () =>{
-    clearInterval(timer);
+    clearInterval(relogio);
+    zerar.disabled = false;
     iniciar.disabled = false;
+    pausar.disabled = true;
+    timer.style.color = 'red';
 });
+
 
 zerar.addEventListener('click', () =>{
-    clearInterval(timer);
-    segundos = 0;
-    minutos = 0;
-    horas = 0;
-    time.innerText = formataHora(horas, minutos, segundos)
+    hora = 0;
+    minuto = 0;
+    segundo = 0;
+    iniciar.disabled = false;
+    zerar.disabled = true;
+    pausar.disabled = true;
+    timer.style.color = 'black';
+    atualizaTimer();
 });
 
 
 
-function formataHora(hora, minuto, segundo){
-    hora = hora < 10 ? `0${hora}:`:`${hora}:`;
-    minuto = minuto < 10 ? `0${minuto}:`:`${minuto}:`;
-    segundo = segundo < 10 ? `0${segundo}`:`${segundo}`;
-
-    return `${hora}${minuto}${segundo}`;
+function atualizaTimer(){
+    timer.innerHTML = '';
+    let horas = hora >=10 ? hora:`0${hora}`;
+    let minutos = minuto >=10 ? minuto:`0${minuto}`
+    let segundos = segundo >=10 ? segundo:`0${segundo}`;
+    timer.innerHTML = `${horas}:${minutos}:${segundos}`;
 }
