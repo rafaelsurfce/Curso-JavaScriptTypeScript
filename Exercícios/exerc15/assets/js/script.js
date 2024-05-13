@@ -6,6 +6,7 @@ function calculadoraFunction(){
             this.cliqueBotoes();
         },
         cliqueBotoes(){
+            //Arrow fuction não mudam o comportamento do "this"
             document.addEventListener('click', (e) => {
                 const el = e.target;
                 if(el.classList.contains('num')){
@@ -26,6 +27,7 @@ function calculadoraFunction(){
         calcular(){
             try {
                 this.display.value = eval(this.display.value);
+                //não recomendado
             } catch (error) {
                 this.display.value = 'Syntax ERROR';
             }
