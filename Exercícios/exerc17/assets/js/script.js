@@ -1,49 +1,55 @@
 const form = document.querySelector('form');
-const result = document.querySelector('.resultado');
+const resultado = document.querySelector('.resultado');
 
-form.addEventListener('submit', (e)=>{
+
+form.addEventListener('submit', (e) =>{
     e.preventDefault();
-    if(document.getElementById('cpf').value.replace(/\D+/g, '').charAt(0).repeat(document.getElementById('cpf').value.replace(/\D+/g, '').length) === document.getElementById('cpf').value.replace(/\D+/g, '')){
-        result.style.color = 'red';
-        return result.innerText = 'CPF INVÁLIDO';
+    const cpf = document.getElementById('cpf');
+    if(cpf.value === ''){ 
+        resultado.innerHTML = 'Digite um número de CPF'
+        resultado.style.color = 'red';
+        return;
+    };
+    let cpfLimpo = cpf.value.replace(/\D+/g, '');
+    
+    if(primeiroDigito(cpfLimpo.slice(0, 9)) === cpfLimpo[0].repeat(cpfLimpo.length)){
+        resultado.innerHTML = 'CPF inválido'
+        return resultado.style.color = 'red';
     }
-    else if(document.getElementById('cpf').value.replace(/\D+/g, '').length !== 11){
-        result.style.color = 'red';
-        return result.innerText = 'CPF INVÁLIDO';
-    }
-    else if(primeiroDigito(document.getElementById('cpf').value) === document.getElementById('cpf').value.replace(/\D+/g, '')){
-        result.style.color = 'green';
-        return result.innerText = 'CPF VÁLIDO';
+    if((primeiroDigito(cpfLimpo.slice(0, 9))) === cpfLimpo){
+        resultado.innerHTML = 'CPF Válido'
+        return resultado.style.color = 'green';
     }
     else{
-        result.style.color = 'red';
-        return result.innerText = 'CPF INVÁLIDO';
+        resultado.innerHTML = 'CPF inválido'
+        return resultado.style.color = 'red';
     }
-     
-
-
+    
+    
 });
 
+
 function primeiroDigito(cpf){
-    let result = 0;
+    let acumulador = 0;
     let indice = 0;
-    let newCpf = cpf.replace(/\D+/g, '');
-    
-    for(i=10; i>=2; i--){
-        result += Number(newCpf[indice]) * i;
+    for(i = 10; i >= 2; i--){
+        acumulador += (cpf[indice] * i);
         indice++;
-    };
-    return segundoDigito((11 - (result % 11)) > 9 ? newCpf.slice(0, 9) + '0': newCpf.slice(0, 9) + String(11 - (result % 11))); 
+    }
+    acumulador = (11 - (acumulador % 11)) > 9 ? 0:(11 - (acumulador % 11));
+    
+    return segundoDigito(cpf + acumulador.toString());
 
 }
 
-function segundoDigito(cpf){
-    let result = 0;
+function segundoDigito(cpf){    
+    let acumulador = 0;
     let indice = 0;
-
-    for(i=11; i>=2; i--){
-        result += Number(cpf[indice]) * i;
+    for(i = 11; i >= 2; i--){
+        acumulador += (cpf[indice] * i);
         indice++;
-    };
-    return (11 - (result % 11)) > 9 ? cpf.slice(0, 10) + '0': cpf.slice(0, 10) + String(11 - (result % 11));
+    }
+
+    acumulador = acumulador = (11 - (acumulador % 11)) > 9 ? 0:(11 - (acumulador % 11));
+    return cpf + acumulador.toString();
 }
