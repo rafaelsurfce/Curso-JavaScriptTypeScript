@@ -4,14 +4,14 @@ class ValidaCpf{
         this.cpf = cpf.replace(/\D+/g, '');
     }
 
-    checkCpf(cpf){
+    checkCpf(){
         let digito1 = ValidaCpf.calculaDigito(this.cpf.slice(0, 9));
         let digito2 = ValidaCpf.calculaDigito(this.cpf.slice(0, 10));
 
         if( (this.cpf.charAt(0).repeat(11) !== this.cpf) && (this.cpf.slice(0, 9) + digito1 + digito2 === this.cpf)){
             return true;
         }else{
-            return 'Digite um CPF válido';
+            return false;
         }
 
     }

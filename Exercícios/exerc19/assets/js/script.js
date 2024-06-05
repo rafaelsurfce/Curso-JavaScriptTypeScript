@@ -1,61 +1,94 @@
 class ValidForm{
-    constructor(form){
-        this.form = form;
+    constructor(){
+        this.form = document.querySelector('.formulario');
+        this.eventos();
     }
-    isSubmit(){
-        this.form.addEventListener('submit', (e) =>{
+
+
+    eventos(){
+        this.form.addEventListener('submit', (e) => {
             e.preventDefault();
-            this.validCampos() ? this.form.submit():console.log("Form invalido");
+            const camposValidos = this.validaCampos();
+            const senhasValidas = this.senhasSaoValidas();
+            if(camposValidos && senhasValidas) {
+                alert('Formulário Enviado');
+                this.form.submit();
+            }
+            
         });
     }
-    validCampos(){
+
+    validaCampos(){
         let valid = true;
-        for( let erro of this.form.querySelectorAll('.alert')){
-            erro.remove();
+        for (let error of this.form.querySelectorAll('.alert')){
+            error.remove();
         }
-        for( let campo of this.form.querySelectorAll('.valid')){
-            const label = campo.previousElementSibling.innerText;
-            if(!campo.value){
-                valid = ValidForm.criaErro(campo, `Campo "${label}" não pode está em branco`);
+        for(let campo of this.form.querySelectorAll('.valid')){
+            if(!campo.value) {
+                const label = campo.previousElementSibling.innerText;
+                this.createErro(campo, `Campo "${label}" não pode estar em branco.`);
+                valid = false;
             }
-            if(campo.classList.contains('input-cpf')){
-                const cpf = new ValidaCpf(campo.value);
-                const result = cpf.checkCpf();
-                if(result !== true) valid = ValidForm.criaErro(campo, result);
-                
+            if(campo.classList.contains('input-cpf')) {
+                if(!this.validCPF(campo)) valid = false;
             }
-            if(campo.classList.contains('input-usuario')){
-                if(campo.value.length < 3 || campo.value.length > 12){
-                    valid = ValidForm.criaErro(campo, `Usuário precisa ter entre 3 a 12 caracteres`);
-                }
-                if(!campo.value.match(/^[a-zA-Z0-9]+$/g)){
-                    valid = ValidForm.criaErro(campo, `Usuário só poderá conter letras e/ou números`);
-                }
+            if(campo.classList.contains('input-usuario')) {
+                if(!this.validUsuario(campo)) valid = false;
             }
-            if(campo.classList.contains('input-senha')){
-                if(campo.value.length < 6 || campo.value.length > 12){
-                    valid = ValidForm.criaErro(campo, `Senha precisa ter entre 3 a 12 caracteres`);
-                }
-                if(campo.value !== this.form.querySelector('#repeatSenha').value){
-                    valid = ValidForm.criaErro(campo, `Campo senha e repeti senha devem ser iguais`);
-                    ValidForm.criaErro(this.form.querySelector('#repeatSenha'), `Campo senha e repeti senha devem ser iguais`);
-                }
+
+        }
+        return valid;
+
+    }
+
+    validCPF(campo){
+            const cpf = new ValidaCpf(campo.value);
+            if(!cpf.checkCpf()){
+                this.createErro(campo, `Digite um CPF válido`);
+                return false;
             }
+            return true;
+    }
+
+    validUsuario(campo){
+        const usuario = campo.value;
+        let valid = true
+        if(usuario.length < 3 || usuario.length > 12){
+            this.createErro(campo, 'Usuário precisa ter entre 3 e 12 caracteres');
+            valid = false;
+        }
+        if(!usuario.match(/^[a-zA-Z0-9]+$/g)){
+            this.createErro(campo, 'Nome de usuário precisa conter apenas letras e números');
+            valid = false;
         }
         return valid;
     }
-    static criaErro(campo, msg){
-        const elemento = document.createElement('p');
-        elemento.classList.toggle('alert');
-        elemento.innerText = msg;
-        campo.parentNode.insertBefore(elemento, campo.nextSibling);
-        return false;
+
+    senhasSaoValidas(){
+        let valid = true;
+        const senha = this.form.querySelector('.input-senha');
+        const repetirSenha = this.form.querySelector('.input-repeatSenha ');
+
+        if(senha.value !== repetirSenha.value){
+            valid = false;
+            this.createErro(senha, `Campos senha e repetir senha precisam ser iguais`);
+            this.createErro(repetirSenha, `Campos senha e repetir senha precisam ser iguais`);
+        }
+
+        if(senha.value.length < 6 || senha.value.length > 12){
+            valid = false;
+            this.createErro(senha, `Senha precisa ta entre 6 e 12 caracteres`);
+        }
+        return valid;
+
+    }
+    createErro(campo, msg){
+        const div = document.createElement('div');
+        div.innerHTML = msg;
+        div.classList.add('alert');
+        campo.insertAdjacentElement('afterend', div);
     }
 
 }
 
-const form = new ValidForm(document.getElementById('formulario')).isSubmit();
-
-
-
-
+const valid = new ValidForm();
