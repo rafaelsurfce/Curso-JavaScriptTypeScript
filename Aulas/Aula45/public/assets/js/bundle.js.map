@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":"AAAAA,QAAQC,IAAI","sources":["webpack://aula45/./src/index.js"],"sourcesContent":["console.log(\"puxa zé cantor\");"],"names":["console","log"],"sourceRoot":""}
