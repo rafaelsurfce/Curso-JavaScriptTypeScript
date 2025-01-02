@@ -1,7 +1,3 @@
-exports.paginaInicial = (req, res) => {
-    res.render('index');
-};
-
-exports.recebePost = (req, res)=>{
-    res.send();
-};
+exports.paginaHome = (req, res) =>{
+    res.render('home');
+}

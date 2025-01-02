@@ -28,10 +28,11 @@ mongoose.connect(process.env.CONNECTIONBD).then(() => {
     app.emit('pronto');
 }).catch((e) => {
     console.log("falha na conexão");
+    console.log(e);
 });
 
 const sessionOptions = session({
-    secret: 'Session Inicial',
+    secret: 'nfneunf52954egseg',
     store: MongoStore.create({mongoUrl: process.env.CONNECTIONBD}),
     resave: false,
     saveUninitialized: false,
@@ -43,7 +44,7 @@ const sessionOptions = session({
 app.use(sessionOptions);
 
 app.on('pronto', ()=>{
-    app.listen(3000,()=>{
-        console.log("Acesse: http://localhost:3000");
+    app.listen(2453,()=>{
+        console.log("Acesse: http://localhost:2453");
     });
 });

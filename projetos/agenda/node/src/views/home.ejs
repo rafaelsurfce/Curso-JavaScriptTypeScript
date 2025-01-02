@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Agenda, Contatos, Agenda Telefônica">
+    <meta name="Author" content="Rafaelsurfce">
+    <meta name="description" content="Ageend de contatos e gerenciamento">
+    <!--Font Icons-->
+    <script src="https://kit.fontawesome.com/9df899838e.js" crossorigin="anonymous"></script>
+
+
+    
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <title>Modelo</title>
+
+</head>
+<body>
+    <header class="cabecalho-home">
+        <button type="button" class="button-bar"><i class="fas fa-bars"></i></button>
+        <button type="button" class="button-user"><i class="fas fa-user-circle"></i></button>
+        <ul class="cabecalho-menu">
+            <li class="menu-item"><i class="fas fa-users"></i> Contatos</li>
+            <li class="menu-item"><i class="fas fa-user-plus"></i> Novo Contato</li>
+            <li class="menu-item"><i class="fas fa-info-circle"></i> Sobre</li>
+        </ul>
+    </header>
+    <main class="main-home">
+        <table class="main-table">
+            <thead>
+                <th>Nome</th>
+                <th>Contato</th>
+                <th>Email</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>Rafael Lima</td>
+                    <td>(88) 98860-0652</td>
+                    <td>rafaesurfce@alu.ufc.br</td>
+                    <td><i class="fas fa-trash"></i></td>
+                    <td><i class="fas fa-pencil-alt"></i></td>
+                </tr>
+                
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th colspan="4">Total</th>
+                    <td>1</td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+
+    <script src="./assets/js/bundle.js"></script>
+</body>
+</html>

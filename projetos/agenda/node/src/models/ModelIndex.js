@@ -5,7 +5,7 @@ const ModelSchema = new mongoose.Schema({
     description: String
 });
 
-const modelHome = mongoose.model('Home', ModelSchema);
+const modelIndex = mongoose.model('index', ModelSchema);
 
 
 class Model {
