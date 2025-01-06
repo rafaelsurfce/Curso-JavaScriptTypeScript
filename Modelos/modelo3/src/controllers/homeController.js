@@ -2,7 +2,9 @@ const HomeModel = require('../models/homeModels');
 
 
 exports.paginaInicial = function (req, res){
-    res.render('index');    //renderiza os views
+    res.render('index', {
+        titulo: 'Esse é o título da página'
+    });    //renderiza os views
 }
 
 exports.cadastre = function (req, res){

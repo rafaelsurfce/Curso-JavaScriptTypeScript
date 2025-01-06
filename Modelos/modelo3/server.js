@@ -1,4 +1,4 @@
-require('dotenv').config(); //variáveis de ambiente localizado em src/.env
+require('dotenv').config();            //variáveis de ambiente localizado no arquivo .env
 const express = require('express'); 
 const app = express(); 
 const mongoose = require('mongoose'); //conexão e modelagem com o banco de dados
@@ -9,12 +9,12 @@ const csurf = require('csurf');       // tokens para forms
 
 const session = require('express-session'); //identifica navegador de um user
 const MongoStore = require('connect-mongo'); //sessões serão salvas no BD
-const flash = require('connect-flash');      // mensagens autodestrutivas
+const flash = require('connect-flash');      // mensagens autodestrutivas de seção
 
-//Middleware são funções executadas nas rotas
+//Middleware são funções executadas nas rotas antes, durante e depois
 const {meuMiddleware, checkCsurfError, csrfMiddleware} = require ('./src/middlewares/middleware');
 
-
+//conexão de banco de dados MONGODB
 mongoose.connect(process.env.CONNECTIONSTRING).then(()=>{
     console.log("BD conectado!");  //conexão realizada
     app.emit('pronto');            //emite um 'pronto' ao app
@@ -23,9 +23,9 @@ mongoose.connect(process.env.CONNECTIONSTRING).then(()=>{
 
 
 app.use(express.urlencoded({extended: true})); //pode postar formularios para dentro da aplicação
-app.use(express.json()); 
-//app.use(helmet());
-//app.use(csurf());
+app.use(express.json());                       //permite trabalhar com formulários em JSON     
+app.use(helmet());                             
+app.use(csurf());
 
 app.use(express.static(path.resolve(__dirname, 'public'))); //arquivos estaticos (imagens, etc)
 app.set('views', path.resolve(__dirname, 'src', 'views'));  //

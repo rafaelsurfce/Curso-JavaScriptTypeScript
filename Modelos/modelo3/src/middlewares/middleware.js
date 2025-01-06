@@ -5,8 +5,7 @@ module.exports.middlewareGlobal = (req, res, next) =>{
 
 module.exports.checkCsurfError = (error, req, res, next) => {
         if(error && error.code === 'EBADCSRFTOKEN'){
-            res.send('Error CRSF.');
-            next();
+            return res.send('Error BAD CRSF.'); 
         }
 }
 
