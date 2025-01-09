@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Agenda, Contatos, Agenda Telefônica">
+    <meta name="Author" content="Rafaelsurfce">
+    <meta name="description" content="Ageend de contatos e gerenciamento">
+    <!--Font Icons-->
+    <script src="https://kit.fontawesome.com/9df899838e.js" crossorigin="anonymous"></script>
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <title>Modelo</title>
+
+</head>
+
+<body>
+    <header class="cabecalho-home">
+        <button type="button" class="button-bar"><i class="fas fa-bars"></i></button>
+        <button type="button" class="button-user"><i class="fas fa-user-circle"></i></button>
+        <ul class="cabecalho-menu">
+            <li class="menu-item"><i class="fas fa-users"></i> Contatos</li>
+            <li class="menu-item"><i class="fas fa-user-plus"></i> Novo Contato</li>
+            <li class="menu-item"><i class="fas fa-info-circle"></i> Sobre</li>
+        </ul>
+    </header>
+    <main class="main-home">
+        <section class="main-form">
+            <form action="" method="post">
+                <label for="nome">Nome* <input type="text" name="nome" id="nome"></label>
+                <label for="sobrenome">Sobrenome <input type="text" name="sobrenome" id="sobrenome"></label>
+                <label for="telefone">Telefone* <input type="tel" name="telefone" id="telefone"></label>
+                <label for="tipo">
+                    Tipo
+                    <select name="tipos" id="tipos">
+                        <option value="pessoal">Pessoal</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="residencial">Residencial</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </label>
+
+                <label for="email">Email* <input type="email" name="email" id="email"></label>
+                <label for="tipo">
+                    Tipo
+                    <select name="tipos" id="tipos">
+                        <option value="pessoal">Pessoal</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="residencial">Residencial</option>
+                        <option value="outros">Outros</option>
+                    </select>
+                </label>
+                <fieldset>
+                    <legend>Endereço</legend>
+                    <label for="rua">Rua</label><input type="text" name="rua" id="rua">
+                    <label for="numero">Numero</label><input type="text" name="numero" id="numero">
+                    <label for="bairro">Bairro</label><input type="text" name="bairro" id="bairro">
+                    <label for="cidade">Cidade</label><input type="text" name="cidade" id="cidade">
+                    <label for="estado">UF</label>
+                    <select name="estado" id="estado">
+                        <option value="Acre">AC</option>
+                        <option value="Alagoas">AL</option>
+                        <option value="Amapa">AP</option>
+                        <option value="Amazonas">AM</option>
+                        <option value="Bahia">BA</option>
+                        <option value="Ceará">CE</option>
+                        <option value="Distrito Federal">DF</option>
+                        <option value="Espirito Santo">ES</option>
+                        <option value="Goiás">GO</option>
+                        <option value="Maranhão">MA</option>
+                        <option value="Mato Grosso">MT</option>
+                        <option value="Mato Grosso do Sul">MS</option>
+                        <option value="Minas Gerais">MG</option>
+                        <option value="Pará">PA</option>
+                        <option value="Paraíba">PB</option>
+                        <option value="Paraná">PR</option>
+                        <option value="Pernambuco">PE</option>
+                        <option value="Piauí">PI</option>
+                        <option value="Rio de Janeiro">RJ</option>
+                        <option value="Rio Grande do Norte">RN</option>
+                        <option value="Rio Grande do Sul">RS</option>
+                        <option value="Rondônia">RO</option>
+                        <option value="Roraima">RR</option>
+                        <option value="Santa Catarina">SC</option>
+                        <option value="São Paulo">SP</option>
+                        <option value="Sergipe">SE</option>
+                        <option value="Tocantins">TO</option>
+                    </select>
+                </fieldset>
+                <input type="submit" value="Salvar" class="button-cadastrar">
+                <input type="reset" value="Limpar" class="button-login">
+            </form>
+        </section>
+    </main>
+
+    <script src="./assets/js/bundle.js"></script>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 exports.paginaInicial = (req, res) => {
-    res.render('cadastro');
+    res.render('userCadastro');
 };
 
-exports.recebePost = (req, res)=>{
+exports.cadastraUser = (req, res)=>{
     res.send();
 };

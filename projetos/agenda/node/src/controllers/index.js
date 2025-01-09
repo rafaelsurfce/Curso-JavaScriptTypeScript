@@ -2,6 +2,6 @@ exports.paginaInicial = (req, res) => {
     res.render('index');
 };
 
-exports.recebePost = (req, res)=>{
+exports.autenticacao = (req, res)=>{
     res.send();
 };

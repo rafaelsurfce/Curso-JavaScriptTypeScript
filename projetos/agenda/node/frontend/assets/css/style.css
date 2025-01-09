@@ -55,7 +55,7 @@ body{
     box-shadow: -5px 12px 20px #1f65c0, 5px 12px 20px #1f65c0;
     height: 372.2px;
     width: 270px;
-    padding: 2.5rem 1rem 2rem;
+    padding: 2.5rem .8rem;
     text-align: left;
 }
 
@@ -79,12 +79,12 @@ form {
 
 form label{
     font-size: .7rem;
-    display: block;
     text-align: left;
     font-weight: 500;
 }
 
-form input[type='email'], form input[type='password'], form input[type='text']{
+form input[type='email'], form input[type='password'], form input[type='text'], form input[type='tel'], form select{
+    display: block;
     width: 100%;
     height: 90%;
     background-color: #f7f7f7;
@@ -153,26 +153,6 @@ label[for="manter-conectado"]{
     background-color: #095fcf;
 }
 
-
-
-@media screen and (min-width: 801px) {
-    .container{
-        height: 80%;
-        width: 85%;
-        border-radius: 20px;
-    }
-    .principal{
-        width: 50%;
-        border-radius: 0 20px 20px 0;
-    }
-    .cabecalho{
-        display: block;
-    }
-    .cabecalho-cadastro{
-        display: block;
-    }
-}
-
 /*STYLE CADASTRO*/
 
 .container-cadastro{
@@ -194,9 +174,9 @@ label[for="manter-conectado"]{
     background-color: white;
     border-radius: 15px;
     box-shadow: -5px 12px 20px #1f65c0, 5px 12px 20px #1f65c0;
-    height: 90%;
+    max-height: 90%;
     width: 270px;
-    padding: .5rem 1rem 0rem;
+    padding: .8rem 1rem;
     text-align: left;
 }
 
@@ -259,23 +239,6 @@ form input[type='text']{
     background-color: #095fcf;
 }
 
-@media screen and (min-width: 801px) {
-    .container-cadastro{
-        height: 96%;
-        width: 90%;
-        border-radius: 20px;
-    }
-
-    .cabecalho-cadastro{
-        display: block;
-    }
-
-    .form-cadastro {
-        height: 93%;
-    }
-
-}
-
 /*-------------------------------------------*/
 
 .cabecalho-home{
@@ -322,7 +285,7 @@ form input[type='text']{
     height: 90%;
     box-shadow: 5px 25px 30px rgb(172, 172, 172);
     border-radius: 15px;
-    padding: 2rem .8rem;
+    padding: 1rem .8rem;
 }
 
 .main-table{
@@ -331,26 +294,64 @@ form input[type='text']{
     max-height: 100%;
     overflow-y: auto;
     text-align: center;
+    border-collapse: collapse;
+    font-size: .3rem;
+}
+thead, tfoot{
+    background-color: var(--cor-principal);
+    color: white;
 }
 
 .td-nome, .td-telefone, .td-email{
-    font-size: .3rem;
-    padding: 5px;
     width: 90%;
 }
 .td-icons{
     width: 10%;
-    font-size: .3rem;
+    padding: 0 2px;
+}
+/*-----------------------------------*/
+.main-form{
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
 }
 
+.main-form form input[type='tel'], .main-form form input[type='email']{
+    width: 200px;
+}
 
+form select{
+    max-width: 100px;
+}
 
+@media screen and (min-width: 800px) {
+    .container{
+        height: 80%;
+        width: 85%;
+        border-radius: 20px;
+    }
+    .principal{
+        width: 50%;
+        border-radius: 0 20px 20px 0;
+    }
+    .cabecalho{
+        display: block;
+    }
 
+    .container-cadastro{
+        height: 96%;
+        width: 90%;
+        border-radius: 20px;
+    }
 
+    .cabecalho-cadastro{
+        display: block;
+    }
 
+    .form-cadastro {
+        height: 93%;
+    }
 
-
-@media screen and (min-width: 801px) {
     .button-bar{
         display: none;
     }
@@ -362,8 +363,20 @@ form input[type='text']{
     .cabecalho-menu{
         display: block;
     }
-    .td-nome, .td-telefone, .td-email, .td-icons{
+    .main-table{
         font-size: 1rem;
     }
 
+
+
 }
+
+
+
+
+
+
+
+
+
+
