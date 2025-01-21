@@ -59,7 +59,9 @@ class Usuario {
         if(!validator.isEmail(this.data.email)) this.errors.push('E-mail inválido');
         if(this.data.password.length < 3 || this.data.password < 50) this.errors.push("Senha precisa ter entre 3 a 50 caracteres");
         const user = await cadastroUsuario.findOne({username: this.data.username});
-        if(user) this.errors.push('Usuário já existe');
+        if(user) return this.errors.push('Usuário já possui cadastro');
+        const email = await cadastroUsuario.findOne({email: this.data.email});
+        if(email) return this.errors.push('E-mail já utilizado');
     }
 }
 
