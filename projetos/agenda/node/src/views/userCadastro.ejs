@@ -1,23 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Agenda, Contatos, Agenda Telefônica">
-    <meta name="Author" content="Rafaelsurfce">
-    <meta name="description" content="Ageend de contatos e gerenciamento">
-    <!--Font Icons-->
-    <script src="https://kit.fontawesome.com/9df899838e.js" crossorigin="anonymous"></script>
-
-    <!--Google Fonts-->
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    <title>Modelo</title>
-
-</head>
+<%- include('includes/head') %>
 <body>
     <div class="container-cadastro">
         <header class="cabecalho-cadastro">
@@ -27,22 +8,23 @@
             <section class="form-cadastro">
                 <i class="fas fa-user-edit"></i>
                 <h2 class="subtitle">Cadastre-se</h2>
-                <form action="" method="post">
+                <%- include('includes/messages') %>
+                <form action="/cadastro/cadastrarUser" method="post">
+                    <input type="hidden" name="_csrf" value=<%= "csrfToken" %>>
                     <label for="nome">Nome</label>
                     <input type="text" name="nome" id="nome" placeholder="Seu primeiro nome">
                     <label for="sobrenome">Sobrenome</label>
                     <input type="text" name="sobrenome" id="sobrenome" placeholder="Seu segundo nome">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" placeholder="email@example.com">
-                    <label for="Usuario">Usuario</label>
-                    <input type="text" name="usuario" id="usuario">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" placeholder="Insira sua senha">
+                    <label for="username">Usuario</label>
+                    <input type="text" name="username" id="username" placeholder="username">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password" placeholder="Insira sua senha">
                     <label for="confSenha">Confirmar Senha:</label>
                     <input type="password" name="confSenha" id="confSenha" placeholder="Confirme sua senha">
-                    
                     <input type="submit" value="Cadastrar" class="button-cadastrar">
-                    <a href="#" class="button-login">Fazer Login</a>
+                    <a href="http://localhost:2453/" class="button-login">Fazer Login</a>
 
                 </form>
             </section>

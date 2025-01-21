@@ -1,5 +1,14 @@
+exports.middlewareGlobal = (req, res, next) => {
+    res.locals.errors = req.flash('errors');
+    res.locals.sucess = req.flash('sucess');
+    res.locals.user = req.session.user;
+    next();
+};
+
+
 exports.checkCsrf = (error, req, res, next) => {
-    if(error && 'EBADCSRFTOKEN' === error.code){
+    if(error){
+        console.log(error);
         return res.render('404');
     }
     next();

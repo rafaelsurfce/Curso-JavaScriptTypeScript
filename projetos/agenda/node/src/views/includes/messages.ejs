@@ -1,0 +1,16 @@
+<% if(errors.length > 0) { %>
+    <span class="msg-error">
+        <% errors.forEach(error => { %>
+            <%= error %>
+        <%});%>
+    </span>
+<% } %>
+
+
+<% if(sucess.length > 0) { %>
+    <span class="msg-error">
+        <% sucess.forEach(sucess => { %>
+            <%= sucess %>
+        <%});%>
+    </span>
+<% } %>

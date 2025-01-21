@@ -1,0 +1,29 @@
+<%- include('includes/head') %>
+<body>
+    <div class="container">
+        <header class="cabecalho">
+    
+        </header>
+        <main class="principal">
+            <section class="form">
+                <i class="fas fa-address-book"></i>
+                <h2 class="subtitle">Entre</h2>
+                <%- include('includes/messages') %>
+                <form action="/autenticacao" method="post">
+                    <input type="hidden" name="_csrf" value=<%= "csrfToken" %>>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="email@example.com">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="password" id="senha" placeholder="Insira sua senha">
+                    <label for="manter-conectado"> <input type="checkbox" name="manterConectado" id="manter-conectado">Manter conectado</label>
+                    <a href="#" class="recupera-senha">Recuperar senha</a>
+                    <input type="submit" value="entrar" class="button-entrar">
+                    <a href="/cadastro" class="button-cadastro">cadastre-se grátis</a>
+
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="./assets/js/bundle.js"></script>
+</body>
+</html>
