@@ -5,16 +5,16 @@
     
         </header>
         <main class="principal">
-            <section class="form">
+            <section class="div-form-login">
                 <i class="fas fa-address-book"></i>
                 <h2 class="subtitle">Entre</h2>
                 <%- include('includes/messages') %>
-                <form action="/autenticacao" method="post">
+                <form action="/autenticacao" method="post" class="form-login">
                     <input type="hidden" name="_csrf" value=<%= "csrfToken" %>>
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="email@example.com">
+                    <input type="email" name="email" id="email"  placeholder="email@example.com" class="valid">
                     <label for="senha">Senha</label>
-                    <input type="password" name="password" id="senha" placeholder="Insira sua senha">
+                    <input type="password" name="password" id="senha" placeholder="Insira sua senha" class="valid">
                     <label for="manter-conectado"> <input type="checkbox" name="manterConectado" id="manter-conectado">Manter conectado</label>
                     <a href="#" class="recupera-senha">Recuperar senha</a>
                     <input type="submit" value="entrar" class="button-entrar">

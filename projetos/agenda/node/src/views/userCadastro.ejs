@@ -5,24 +5,24 @@
     
         </header>
         <main class="principal">
-            <section class="form-cadastro">
+            <section class="div-form-cadastro">
                 <i class="fas fa-user-edit"></i>
                 <h2 class="subtitle">Cadastre-se</h2>
                 <%- include('includes/messages') %>
-                <form action="/cadastro/cadastrarUser" method="post">
+                <form action="/cadastro/cadastrarUser" method="post" class="form-cadastro">
                     <input type="hidden" name="_csrf" value=<%= "csrfToken" %>>
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" placeholder="Seu primeiro nome">
+                    <label for="nome">Nome*</label>
+                    <input type="text" name="nome" id="nome" placeholder="Seu primeiro nome" class="valid">
                     <label for="sobrenome">Sobrenome</label>
                     <input type="text" name="sobrenome" id="sobrenome" placeholder="Seu segundo nome">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="email@example.com">
-                    <label for="username">Usuario</label>
-                    <input type="text" name="username" id="username" placeholder="username">
-                    <label for="password">Senha</label>
-                    <input type="password" name="password" id="password" placeholder="Insira sua senha">
-                    <label for="confSenha">Confirmar Senha:</label>
-                    <input type="password" name="confSenha" id="confSenha" placeholder="Confirme sua senha">
+                    <label for="email">Email*</label>
+                    <input type="email" name="email" id="email" placeholder="email@example.com" class="valid">
+                    <label for="username">Usuario*</label>
+                    <input type="text" name="username" id="username" placeholder="username" class="valid">
+                    <label for="password">Senha*</label>
+                    <input type="password" name="password" id="password" placeholder="Insira sua senha" class="valid">
+                    <label for="confSenha">Confirmar Senha*</label>
+                    <input type="password" name="confSenha" id="confSenha" placeholder="Confirme sua senha" class="valid">
                     <input type="submit" value="Cadastrar" class="button-cadastrar">
                     <a href="http://localhost:2453/" class="button-login">Fazer Login</a>
 

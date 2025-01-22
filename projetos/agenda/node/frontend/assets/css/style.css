@@ -28,6 +28,7 @@ body{
     display: flex;
     box-shadow: 5px 25px 30px rgb(172, 172, 172);
 }
+
 .cabecalho{
     display: none;
     background-image: url('../imgs/fundo.png');
@@ -49,11 +50,11 @@ body{
     justify-content: center;
 }
 
-.form{
+.div-form-login{
     background-color: white;
     border-radius: 15px;
     box-shadow: -5px 12px 20px #1f65c0, 5px 12px 20px #1f65c0;
-    height: 372.2px;
+    max-height: 360px;
     width: 270px;
     padding: 2rem .8rem;
     text-align: left;
@@ -61,7 +62,7 @@ body{
 
 
 
-.form .fas{
+.div-form-login .fas{
     display: block;
     text-align: center;
     color: #2980F2;
@@ -85,7 +86,7 @@ form input[type='email'], form input[type='password'], form input[type='text'], 
     background-color: #f7f7f7;
     border: 1px solid #c9c3c3;
     padding: .6rem;
-    margin-bottom: 1rem;
+    margin-bottom: .2rem;
     border-radius: 4px;
     font-size: .8rem;
 }
@@ -95,7 +96,7 @@ form input[type='checkbox']{
 }
 
 label[for="manter-conectado"], .recupera-senha{
-    margin-bottom: 1.8rem;
+    margin-bottom: 1rem;
     color: rgb(110, 110, 110);   
     font-size: .7rem;
     font-weight: 500;
@@ -158,11 +159,12 @@ label[for="manter-conectado"]{
     box-shadow: 5px 25px 30px rgb(172, 172, 172);
 }
 
-.form-cadastro .fas{
+.div-form-cadastro .fas{
     display: block;
     text-align: center;
     color: #2980F2;
     font-size: 1.5rem;
+    margin-top: 1rem;
 }
 
 .msg-sucess, .msg-error{
@@ -181,17 +183,26 @@ label[for="manter-conectado"]{
     background-color: #5cb85c;
 }
 
+.alert{
+    margin: 0;
+    font-size: .7rem;
+    color: red;
+}
 
-.form-cadastro{
+
+.div-form-cadastro{
     background-color: white;
     border-radius: 15px;
     box-shadow: -5px 12px 20px #1f65c0, 5px 12px 20px #1f65c0;
-    height: 590.2px;
+    max-height: 100%;
     width: 270px;
     padding: .5rem 1rem;
     text-align: left;
 }
 
+.div-form-cadastro form input{
+    margin-bottom: .5rem;
+}
 .cabecalho-cadastro{
     display: none;
     background-image: url('../imgs/fundo-cadastro.jpg');
@@ -201,17 +212,6 @@ label[for="manter-conectado"]{
     border-radius: 20px 0 0 20px;
     width: 50%;
     height: 100%;
-}
-
-form input[type='text']{
-    width: 100%;
-    height: 90%;
-    background-color: #f7f7f7;
-    border: 1px solid #c9c3c3;
-    padding: .6rem;
-    margin-bottom: 1rem;
-    border-radius: 4px;
-    font-size: .8rem;
 }
 
 .button-login{
