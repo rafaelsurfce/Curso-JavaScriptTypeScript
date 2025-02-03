@@ -2,24 +2,27 @@
 <body>
 <%- include('includes/menu') %>
     <main class="main-home">
+        <%- include('includes/messages') %>
         <table class="main-table">
             <thead>
                 <th class="td-nome">Nome</th>
-                <th class="td-telefone">Contato</th>
+                <th class="td-telefone">Telefone</th>
                 <th class="td-email">Email</th>
-                <th class="td-icons">Excluir</th>
                 <th class="td-icons">Atualizar</th>
+                <th class="td-icons">Excluir</th>
             </thead>
             
             <tbody>
+                <% contatos.forEach( contato => { %>
+                
                 <tr>
-                    <td class="td-nome">Rafael Lima</td>
-                    <td class="td-telefone">(88) 98860-0652</td>
-                    <td class="td-email">rafaesurfce@alu.ufc.br</td>
-                    <td class="td-icons"><i class="fas fa-trash"></i></td>
-                    <td class="td-icons"><i class="fas fa-sync-alt"></i></td>
+                    <td class="td-nome"> <%= `${contato.nome} ${contato.sobrenome} ` %></td>
+                    <td class="td-telefone">  <%= contato.telefone %> </td>
+                    <td class="td-email"> <%= contato.email %></td>
+                    <td class="td-icons update"><a href="/novoContato/<%=contato._id %>"><i class="fas fa-sync-alt"></i></a></td>
+                    <td class="td-icons delete"><a href="/deletarContato/<%=contato._id %>"><i class="fas fa-trash"></i></a></td>
                 </tr>
-
+                <% }); %> 
                 
                  
 
@@ -28,12 +31,12 @@
             <tfoot>
                 <tr>
                     <th colspan="4">Total</th>
-                    <td>1</td>
+                    <td> <%= contatos.length %></td>
                 </tr>
             </tfoot>
         </table>
     </main>
 
-    <script src="./assets/js/bundle.js"></script>
+    <script src="/assets/js/bundle.js"></script>
 </body>
 </html>

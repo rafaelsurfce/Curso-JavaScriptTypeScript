@@ -1,78 +1,87 @@
 <%- include('includes/head') %>
 
-<body>
-    <%- include('includes/menu') %>
-    <main class="main-home">
-        <section class="main-form">
-            <form action="/novoContato/cadastrarContato" method="post">
-                <input type="hidden" name="_csrf" value=<%= "csrfToken" %>>
-                <label for="nome">Nome* <input type="text" name="nome" id="nome"></label>
-                <label for="sobrenome">Sobrenome <input type="text" name="sobrenome" id="sobrenome"></label>
-                <label for="telefone">Telefone* <input type="tel" name="telefone" id="telefone"></label>
-                <label for="tipo">
-                    Tipo
-                    <select name="tipos" id="tipos">
-                        <option value="pessoal">Pessoal</option>
-                        <option value="comercial">Comercial</option>
-                        <option value="residencial">Residencial</option>
-                        <option value="outros">Outros</option>
-                    </select>
-                </label>
+    <body>
+        <%- include('includes/menu') %>
+            <main class="main-home">
+                <%- include('includes/messages') %>
+                    <section class="main-form">
+                        <% if(contato._id) { %>
+                            <form action="/cadastrarContato/edit/<%= contato._id %>" method="post">
+                            <% } else { %>
 
-                <label for="email">Email* <input type="email" name="email" id="email"></label>
-                <label for="tipo">
-                    Tipo
-                    <select name="tipos" id="tipos">
-                        <option value="pessoal">Pessoal</option>
-                        <option value="comercial">Comercial</option>
-                        <option value="residencial">Residencial</option>
-                        <option value="outros">Outros</option>
-                    </select>
-                </label>
-                <fieldset>
-                    <legend>Endereço</legend>
-                    <label for="rua">Rua</label><input type="text" name="rua" id="rua">
-                    <label for="numero">Numero</label><input type="text" name="numero" id="numero">
-                    <label for="bairro">Bairro</label><input type="text" name="bairro" id="bairro">
-                    <label for="cidade">Cidade</label><input type="text" name="cidade" id="cidade">
-                    <label for="estado">UF</label>
-                    <select name="estado" id="estado">
-                        <option value="Acre">AC</option>
-                        <option value="Alagoas">AL</option>
-                        <option value="Amapa">AP</option>
-                        <option value="Amazonas">AM</option>
-                        <option value="Bahia">BA</option>
-                        <option value="Ceará">CE</option>
-                        <option value="Distrito Federal">DF</option>
-                        <option value="Espirito Santo">ES</option>
-                        <option value="Goiás">GO</option>
-                        <option value="Maranhão">MA</option>
-                        <option value="Mato Grosso">MT</option>
-                        <option value="Mato Grosso do Sul">MS</option>
-                        <option value="Minas Gerais">MG</option>
-                        <option value="Pará">PA</option>
-                        <option value="Paraíba">PB</option>
-                        <option value="Paraná">PR</option>
-                        <option value="Pernambuco">PE</option>
-                        <option value="Piauí">PI</option>
-                        <option value="Rio de Janeiro">RJ</option>
-                        <option value="Rio Grande do Norte">RN</option>
-                        <option value="Rio Grande do Sul">RS</option>
-                        <option value="Rondônia">RO</option>
-                        <option value="Roraima">RR</option>
-                        <option value="Santa Catarina">SC</option>
-                        <option value="São Paulo">SP</option>
-                        <option value="Sergipe">SE</option>
-                        <option value="Tocantins">TO</option>
-                    </select>
-                </fieldset>
-                <input type="submit" value="Salvar" class="button-cadastrar">
-                <input type="reset" value="Limpar" class="button-login">
-            </form>
-        </section>
-    </main>
+                                <form action="/cadastrarContato" method="post">
+                                    <% } %>
+                                        <input type="hidden" name="_csrf" value=<%= "csrfToken" %>>
+                                        <label for="nome">Nome* <input type="text" name="nome" id="nome" value="<%= contato.nome %>"></label>
+                                        <label for="sobrenome">Sobrenome <input type="text" name="sobrenome" id="sobrenome" value="<%= contato.sobrenome %>"></label>
+                                        <label for="telefone">Telefone* <input type="tel" name="telefone" id="telefone" value="<%= contato.telefone %>"></label>
+                                        <label for="tipo">
+                                            Tipo
+                                            <select name="tipoTelefone" id="tipo">
+                                                <option value=""></option>
+                                                <option value="pessoal">Pessoal</option>
+                                                <option value="comercial">Comercial</option>
+                                                <option value="residencial">Residencial</option>
+                                                <option value="outros">Outros</option>
+                                            </select>
+                                        </label>
 
-    <script src="./assets/js/bundle.js"></script>
-</body>
+                                        <label for="email">Email* <input type="email" name="email" id="email" value="<%= contato.email %>"></label>
+                                        <label for="tipo">
+                                            Tipo
+                                            <select name="tipoEmail" id="tipo">
+                                                <option value=""></option>
+                                                <option value="pessoal">Pessoal</option>
+                                                <option value="comercial">Comercial</option>
+                                                <option value="residencial">Residencial</option>
+                                                <option value="outros">Outros</option>
+                                            </select>
+                                        </label>
+                                        <fieldset>
+                                            <legend>Endereço</legend>
+                                            <label for="rua">Rua</label><input type="text" name="rua" id="rua" value="<%= contato.ruaEndereco %>">
+                                            <label for="numero">Numero</label><input type="text" name="numero" id="numero" value="<%= contato.numeroEndereco %>">
+                                            <label for="bairro">Bairro</label><input type="text" name="bairro" id="bairro" value="<%= contato.bairroEndereco %>">
+                                            <label for="cidade">Cidade</label><input type="text" name="cidade" id="cidade" value="<%= contato.cidadeEndereco %>">
+                                            <label for="estado">UF</label>
+                                            <select name="estado" id="estado">
+                                                <option value=""></option>
+                                                <option value="Acre">AC</option>
+                                                <option value="Alagoas">AL</option>
+                                                <option value="Amapa">AP</option>
+                                                <option value="Amazonas">AM</option>
+                                                <option value="Bahia">BA</option>
+                                                <option value="Ceará">CE</option>
+                                                <option value="Distrito Federal">DF</option>
+                                                <option value="Espirito Santo">ES</option>
+                                                <option value="Goiás">GO</option>
+                                                <option value="Maranhão">MA</option>
+                                                <option value="Mato Grosso">MT</option>
+                                                <option value="Mato Grosso do Sul">MS</option>
+                                                <option value="Minas Gerais">MG</option>
+                                                <option value="Pará">PA</option>
+                                                <option value="Paraíba">PB</option>
+                                                <option value="Paraná">PR</option>
+                                                <option value="Pernambuco">PE</option>
+                                                <option value="Piauí">PI</option>
+                                                <option value="Rio de Janeiro">RJ</option>
+                                                <option value="Rio Grande do Norte">RN</option>
+                                                <option value="Rio Grande do Sul">RS</option>
+                                                <option value="Rondônia">RO</option>
+                                                <option value="Roraima">RR</option>
+                                                <option value="Santa Catarina">SC</option>
+                                                <option value="São Paulo">SP</option>
+                                                <option value="Sergipe">SE</option>
+                                                <option value="Tocantins">TO</option>
+                                            </select>
+                                        </fieldset>
+                                        <input type="submit" value="Salvar" class="button-cadastrar">
+                                        <input type="reset" value="Limpar" class="button-login">
+                            </form>
+                    </section>
+            </main>
 
-</html>
+            <script src="/assets/js/bundle.js"></script>
+    </body>
+
+    </html>

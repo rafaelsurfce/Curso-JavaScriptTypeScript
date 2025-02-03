@@ -2,7 +2,8 @@ const Usuario = require('../models/usuarios');
 
 
 exports.index = (req, res) => {
-    res.render('login');
+    if(!req.session.user) return res.render('login');
+    return res.redirect('/home');
 };
 
 exports.autenticacao = async (req, res) => {
@@ -11,7 +12,7 @@ exports.autenticacao = async (req, res) => {
         await usuario.autenticar();
         if (usuario.errors.length > 0) {
             req.flash('errors', usuario.errors);
-            req.session.save(function () {
+            req.session.save(()=>{
                 return res.redirect('back');
             });
             return;
@@ -19,7 +20,7 @@ exports.autenticacao = async (req, res) => {
         req.flash('sucess', 'Usuário logado com sucesso.');
         req.session.user = usuario.user;
         req.session.save(function () {
-            return res.redirect('/home');
+            return res.redirect('back');
         });
     } catch (error) {
         console.log(error);

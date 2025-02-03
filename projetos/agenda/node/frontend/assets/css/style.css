@@ -285,6 +285,10 @@ label[for="manter-conectado"]{
     transition: color .5s;
 }
 
+.cabecalho-menu a, .cabecalho-sair a{
+    text-decoration: none;
+    color: white;
+}
 .cabecalho-sair{
     display: block;
     float: right;
@@ -326,6 +330,7 @@ thead, tfoot{
     width: 10%;
     padding: 0 2px;
 }
+
 /*-----------------------------------*/
 .main-form{
     height: 100%;
