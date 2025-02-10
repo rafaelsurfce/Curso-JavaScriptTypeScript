@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const validator = require('validator'); //utilizado para validar dados de entrada;
-const bcryptjs = require('bcryptjs'); //usado para criptografar dados
+const validator = require('validator');                                     //utilizado para validar dados de entrada;
+const bcryptjs = require('bcryptjs');                                       //usado para criptografar dados
 
 const usuarioSchema = new mongoose.Schema({
     nome: {type: String, required: true},
@@ -10,7 +10,7 @@ const usuarioSchema = new mongoose.Schema({
     password: {type: String, required: true}   
 });
 
-const cadastroUsuario = mongoose.model('usuario', usuarioSchema);   //Criando a tabela de usuarios
+const cadastroUsuario = mongoose.model('usuario', usuarioSchema);           //Criando a tabela de usuarios
 
 
 class Usuario {
@@ -22,10 +22,10 @@ class Usuario {
 
     async cadastraUsuario(){
         await this.validar();
-        if(this.errors.length > 0) return; //verifica se não tem erros nos dados
+        if(this.errors.length > 0) return;                                  //verifica se não tem erros nos dados
         const salt = bcryptjs.genSaltSync();
-        this.data.password = bcryptjs.hashSync(this.data.password, salt); //criptografa a senha
-        this.user = await cadastroUsuario.create(this.data);    //adiciona os dados a tabela
+        this.data.password = bcryptjs.hashSync(this.data.password, salt);   //criptografa a senha
+        this.user = await cadastroUsuario.create(this.data);                //adiciona os dados a tabela
     }
 
     async autenticar(){
@@ -35,7 +35,7 @@ class Usuario {
             this.errors.push('Usuário não encontrado')
             return;
         };
-        if(!bcryptjs.compareSync(password, this.user.password)){
+        if(!bcryptjs.compareSync(password, this.user.password)){            //compara a senha recebida com a cadastrada
             this.errors.push('Senha incorreta');
             return;
         }

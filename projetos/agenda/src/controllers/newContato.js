@@ -58,7 +58,7 @@ exports.edit = async (req, res) => {
             return;
         }
         req.flash('sucess', 'Contato editado com sucesso');
-        req.session.save(() => { return res.redirect(`/novoContato/${contato.contato._id}`) }); //objeto.atributo.chaveAtributo
+        req.session.save(() => { res.redirect(`/novoContato/${contato.contato._id}`) }); //objeto.atributo.chaveAtributo
         return;
 
     } catch (error) {

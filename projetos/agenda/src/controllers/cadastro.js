@@ -10,15 +10,15 @@ exports.cadastraUser = async (req, res) => {
         const usuario = new Usuario(req.body);
         await usuario.cadastraUsuario();
 
-        if (usuario.errors.length > 0) {                                             //verifica se não possui erros na array de erros
+        if (usuario.errors.length > 0) {                                            //verifica se não possui erros na array de erros
             req.flash('errors', usuario.errors);                                    //cria a msg de erro do array nas flash msgs
-            req.session.save(function () {                                           //salva a session 
+            req.session.save(function () {                                          //salva a session 
                 return res.redirect('back');
             });
             return;
         }
         req.flash('sucess', 'Usuário criado com sucesso.');                        //cria a msg de erro do array nas flash msgs 
-        req.session.save(function () {                                               //salva a session
+        req.session.save(function () {                                              //salva a session
             return res.redirect('back');
         });
 

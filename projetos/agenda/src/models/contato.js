@@ -35,17 +35,17 @@ class Contato {
         if (typeof id !== 'string') return;
         this.valida();
         if (this.errors.length > 0) return;
-        this.contato = await cadastroContato.findByIdAndUpdate(id, this.data, { new: true });     //faz uma atualização a partir do ID do dado
+        this.contato = await cadastroContato.findByIdAndUpdate(id, this.data, { new: true });               //faz uma atualização a partir do ID do dado
     };
 
     valida() {
         for (const key in this.data) {
-            if (typeof this.data[key] !== 'string') {     //verifica se o dados recebido é do tipo string, caso não seja é resetado
+            if (typeof this.data[key] !== 'string') {                                                       //verifica se o dados recebido é do tipo string, caso não seja é resetado
                 this.data[key] = '';
             }
         }
 
-        if (this.data.email && !validator.isEmail(this.data.email)) this.errors.push('E-mail inválido');
+        if (this.data.email && !validator.isEmail(this.data.email)) this.errors.push('E-mail inválido');   //verifica se o email foi enviado e se foi um válido  
         if (!this.data.nome) this.errors.push('É necessário informar o nome do Contato');
         if (!this.data.email && !this.data.telefone) {
             this.errors.push('Pelo menos um contato precisa ser enviado, e-mail ou telefone.');
@@ -81,7 +81,7 @@ class Contato {
 
     static async deletar(id){
         if(typeof id !== 'string' ) return;
-        const contato = await cadastroContato.findByIdAndDelete({_id: id});
+        const contato = await cadastroContato.findOneAndDelete({_id: id});
         return contato;
     }
 }
